@@ -1,5 +1,5 @@
 const express = require('express')
-const {getAllTransactions, getTransaction, createTransaction, deleteTransaction} = require('../queries/transactions')
+const {getAllTransactions, getTransaction, createTransaction, deleteTransaction, updateTransaction} = require('../queries/transactions')
 const transactions = express.Router()
 
 transactions.get("/", async (req, res) => {
@@ -37,6 +37,16 @@ transactions.delete("/:id", async (req,res) => {
         res.status(200).json(deletedTransaction)
     } else {
         res.status(404).send("Transaction Not Found")
+    }
+})
+
+transactions.put("/:id", async (req, res) => {
+    const { id } = req.params
+    const updatedTransaction = await updateTransaction(id, req.body)
+    if (updatedTransaction.id) {
+    res.status(200).json(updatedTransaction)
+    } else {
+        res.status(404).send("Error updating Transaction")
     }
 })
 

@@ -51,9 +51,29 @@ const deleteTransaction = async (id) => {
   }
 };
 
+const updateTransaction = async (id, transaction) => {
+  try {
+    const updatedTransaction = await db.one(
+      'UPDATE transactions SET item_name=$1, amount=$2, "date"=$3, "from"=$4, category=$5 WHERE id=$6 RETURNING *',
+      [
+        transaction.item_name,
+        transaction.amount,
+        transaction.date,
+        transaction.from,
+        transaction.category,
+        id,
+      ]
+    );
+    return updatedTransaction;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   getAllTransactions,
   getTransaction,
   createTransaction,
   deleteTransaction,
+  updateTransaction,
 };
