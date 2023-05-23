@@ -1,5 +1,5 @@
 const express = require('express')
-const {getAllTransactions, getTransaction} = require('../queries/transactions')
+const {getAllTransactions, getTransaction, createTransaction} = require('../queries/transactions')
 const transactions = express.Router()
 
 transactions.get("/", async (req, res) => {
@@ -19,6 +19,15 @@ transactions.get("/:id", async (req, res) => {
         res.status(404).json({ error : "transaction not found"})
     }
 
+})
+
+transactions.post("/", async (req, res) => {
+    try {
+        const transaction = await createTransaction(req.body)
+        res.status(200).json(transaction)
+    } catch (error) {
+       res.status(404).json({ error: error})
+    }
 })
 
 module.exports = transactions
