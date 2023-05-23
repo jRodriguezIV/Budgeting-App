@@ -8,7 +8,7 @@ CREATE TABLE transactions (
     id SERIAL PRIMARY KEY,
     item_name TEXT,
     amount INT,
-    date TEXT,
-    from TEXT,
+    "date" TEXT,
+    "from" TEXT,
     category TEXT
 );
