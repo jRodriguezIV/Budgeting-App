@@ -1,5 +1,5 @@
 const pgp= require('pg-promise')()
-require('dotnev').config()
+require('dotenv').config()
 
 const DATABASE_URL = process.env.DATABASE_URL
 
