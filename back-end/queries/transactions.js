@@ -33,7 +33,19 @@ const createTransaction = async (transaction) => {
         transaction.category,
       ]
     );
-    return newTransaction
+    return newTransaction;
+  } catch (error) {
+    return error;
+  }
+};
+
+const deleteTransaction = async (id) => {
+  try {
+    const deletedTransaction = await db.one(
+      "DELETE FROM transactions WHERE id = $1 RETURNING *",
+      id
+    );
+    return deletedTransaction;
   } catch (error) {
     return error;
   }
@@ -42,5 +54,6 @@ const createTransaction = async (transaction) => {
 module.exports = {
   getAllTransactions,
   getTransaction,
-  createTransaction
+  createTransaction,
+  deleteTransaction,
 };
