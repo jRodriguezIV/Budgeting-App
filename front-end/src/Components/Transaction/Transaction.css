@@ -1,0 +1,13 @@
+.transactionInfo {
+    background-color: aliceblue;
+    text-align: center;
+    margin: 5% 25% 15% 25%;
+    border-radius: 15px;
+    padding: 1%;
+}
+
+.transactionHeader {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 0;
+}
