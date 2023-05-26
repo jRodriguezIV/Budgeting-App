@@ -21,8 +21,8 @@ export default function EditTransaction() {
       .get(`${API}/transactions/${id}`)
       .then((response) => setTransaction(response.data))
       .catch((e) => console.warn("catch", e));
-  }, []);
-  console.log(transaction);
+  }, [id]);
+
 
   function handleTextChange(event) {
     setTransaction({ ...transaction, [event.target.id]: event.target.value });

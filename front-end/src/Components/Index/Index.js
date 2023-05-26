@@ -13,7 +13,7 @@ export default function Index() {
       .then((response) => setTransactions(response.data))
       .catch((e) => console.warn("catch", e));
   }, []);
-  console.log(transactions);
+
 
   function styleElement() {
     let n = transactions.reduce((acc, cur) => acc + cur.amount, 0)
