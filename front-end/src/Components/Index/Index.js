@@ -15,11 +15,25 @@ export default function Index() {
   }, []);
   console.log(transactions);
 
+  function styleElement() {
+    let n = transactions.reduce((acc, cur) => acc + cur.amount, 0)
+    console.log(n)
+    if(n >= 100) {
+      return {backgroundColor:"green"}
+    } else if (n > 0 && n <= 99) {
+      return {backgroundColor:"yellow"}
+    } else if (n <= 0) {
+      return {backgroundColor:"red"}
+    }
+  }
+
   return (
     <div className="index">
       <h1 className="total">
         Bank Account Total:{" "}
+        <span style={styleElement()}>
         {transactions.reduce((acc, cur) => acc + cur.amount, 0)}
+        </span>
       </h1>
 
       <div className="transactionList">
