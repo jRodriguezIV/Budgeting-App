@@ -1,0 +1,27 @@
+.navBar {
+    background-color: #aef4db;
+}
+
+.navBarText {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.navIcon {
+    font-size: xx-large;
+    font-weight: bold;
+    padding-left: 15%;
+    cursor: pointer;
+}
+
+.newTransaction {
+    margin-right: 25%;
+    margin-top: 32px;
+    margin-bottom: 25px;
+    padding: 10px;
+    border: 2px solid gray ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
