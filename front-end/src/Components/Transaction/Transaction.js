@@ -1,12 +1,13 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import './Transaction.css'
 
 const API = process.env.REACT_APP_API_URL
 
 export default function Transaction() {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [transaction, setTransaction] = useState({})
 
     useEffect(() => {
@@ -27,6 +28,8 @@ export default function Transaction() {
             <p>Transaction Date: {transaction.date}</p>
             <p>Transaction Source: {transaction.from}</p>
             <p>Category: {transaction.category}</p>
+
+            <button onClick={() => navigate(`/${id}/edit`)}>Edit</button>
 
         </div>
         </>
