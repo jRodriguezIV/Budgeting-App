@@ -1,10 +1,13 @@
 import "./NewTransaction.css";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+
+const API = process.env.REACT_APP_API_URL;
 
 export default function NewTransaction() {
   const navigate = useNavigate();
-  const { id } = useParams();
+  let id = ""
   const [transaction, setTransaction] = useState({
     item_name: "",
     amount: 0,
@@ -17,11 +20,27 @@ export default function NewTransaction() {
     setTransaction({ ...transaction, [event.target.id]: event.target.value });
   }
 
-  function handleSubmit() {}
+  function addTransaction(newTransaction) {
+    axios
+      .post(`${API}/transactions`, newTransaction)
+      .then((response) => (id = response.data.id))
+      .then(
+        () => {
+          navigate(`/${id}`);
+        },
+        (error) => console.error(error)
+      )
+      .catch((e) => console.warn("catch", e));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    addTransaction(transaction);
+  }
 
   return (
     <>
-        <h2 className="newHeader">New Transaction Form</h2>
+      <h2 className="newHeader">New Transaction Form</h2>
       <div className="newFormWrapper">
         <form onSubmit={handleSubmit}>
           <label htmlFor="item_name">

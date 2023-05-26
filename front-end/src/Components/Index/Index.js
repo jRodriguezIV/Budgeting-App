@@ -24,7 +24,7 @@ export default function Index() {
 
       <div className="transactionList">
         {transactions.map((el) => (
-          <>
+          <div key={el.id}>
             <div className="transaction">
               <p className="date">{el.date}</p>
               <a className="id" href={`/${el.id}`}>
@@ -33,7 +33,7 @@ export default function Index() {
               <p className="amount">{el.amount}</p>
             </div>
             <hr style={{ width: "95%" }} />
-          </>
+          </div>
         ))}
       </div>
     </div>

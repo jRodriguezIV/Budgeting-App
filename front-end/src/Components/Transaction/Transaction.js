@@ -20,7 +20,13 @@ export default function Transaction() {
 
   function handleDelete() {
     axios
-      .delete(`${API}/transaction/${id}`)
+      .delete(`${API}/transactions/${id}`)
+      .then(
+        () => {
+          navigate(`/`)
+        },
+        (e) => console.error(e)
+      )
       .catch((e) => console.warn("catch", e));
   }
 
