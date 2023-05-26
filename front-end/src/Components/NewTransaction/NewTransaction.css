@@ -1,0 +1,12 @@
+.newFormWrapper{
+    text-align: center;
+    padding: 5%;
+    background-color: aliceblue;
+    margin-right: 25%;
+    margin-left: 25%;
+    border-radius: 5px;
+}
+
+.newHeader {
+    text-align: center;
+}

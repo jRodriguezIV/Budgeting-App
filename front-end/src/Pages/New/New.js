@@ -1,9 +1,9 @@
+import NewTransaction from "../../Components/NewTransaction/NewTransaction";
+
 export default function New() {
-
-
-    return (
-        <div>
-            New Page
-        </div>
-    )
+  return (
+    <div>
+      <NewTransaction />
+    </div>
+  );
 }
